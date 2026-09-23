@@ -1,5 +1,7 @@
 # Diverse Beam Search – bessere Lösung oder nur Alternativen? – Streamlit-Demo
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-diverse-beam-demo.streamlit.app/)**
+
 Siebtes Stück der **Heuristische-Baumsuche-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations Research und Machine Learning" - die zweite Fortsetzung von [beam-search-demo](../beam-search-demo): Beam Search liefert **eine** Lösung, und die B Plätze seines Strahls laufen oft auf dieselbe Route zu. **Diverse Beam Search** (Vijayakumar, Cogswell, Selvaraju, Sun, Lee, Crandall & Batra, AAAI 2018) teilt das Strahlbudget B in **G Gruppen** zu je b' = B / G Plätzen. Die Gruppen laufen Schicht für Schicht nacheinander; die Bewertung eines Kandidaten wird um **λ × (Zahl früherer Gruppen, die diesen Zustand in dieser Schicht schon gewählt haben)** verschlechtert. Jede Gruppe liefert ihre **eigene Route**; Gruppe 1 wird nie bestraft - sie ist ein gewöhnlicher Beam Search der Breite b'.
 
 **Einordnung in die Linie:** derselbe Graph, dieselben Instanzen und dieselben 50 festen Vergleichsinstanzen wie in [beam-search-demo](../beam-search-demo) und [monobeam-demo](../monobeam-demo) (das dortige `beam_search` ist wortgleich kopiert und reproduziert dessen Zahlen, als Test hinterlegt); Beam Search mit f-Rang, A\* und Uniform-Cost dienen als Vergleichsgrößen. Neu ist `diverse_beam_search` mit schichtweise gestaffelten Gruppen und Hamming-Diversitätsstrafe, dazu eine handgebaute Zwei-Korridore-Falle.

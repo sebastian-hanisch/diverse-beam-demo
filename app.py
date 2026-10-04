@@ -82,7 +82,7 @@ nie schlechtere Lösung als Beam Search der Breite b'. Hier wird gemessen, was d
 )
 st.caption(
     "Setzt auf [beam-search-demo](https://github.com/sebastian-hanisch/beam-search-demo) auf (derselbe Graph, dieselben Instanzen; Beam Search "
-    "mit f-Rang als Vergleich). Noch nicht gebautes Geschwister: Monte Carlo Tree Search (MCTS)."
+    "mit f-Rang als Vergleich). Geschwister aus der Linie: [mcts-demo](https://github.com/sebastian-hanisch/mcts-demo) (Monte Carlo Tree Search)."
 )
 
 with st.expander("So funktioniert Diverse Beam Search", expanded=True):
@@ -90,7 +90,7 @@ with st.expander("So funktioniert Diverse Beam Search", expanded=True):
         """
 1. **Gruppen und Schichten:** wie Beam Search Schicht für Schicht (Schicht = Kantenzahl vom Start). Das Budget B = G × b' ist auf G Gruppen zu je b' Plätzen aufgeteilt.
 2. **Reihenfolge:** in jeder Schicht setzt Gruppe 1 ihren Strahl fort (Kandidaten nach f = g + h, die b' besten bleiben), dann Gruppe 2 usw.
-3. **Diversitätsstrafe (Hamming):** für Gruppe g wird jeder Kandidat um **λ × Kantenlänge × (Zahl früherer Gruppen, die ihn in dieser Schicht gewählt haben)** schlechter bewertet. λ = 0 heißt: G unabhängige gleiche Beam Searches.
+3. **Diversitätsstrafe (Hamming):** für Gruppe g wird jeder Kandidat um **λ × mittlere Kantenlänge × (Zahl früherer Gruppen, die ihn in dieser Schicht gewählt haben)** schlechter bewertet. λ = 0 heißt: G unabhängige gleiche Beam Searches.
 4. **Ergebnis:** jede Gruppe endet, wenn sie das Ziel erzeugt (kleinstes g der Schicht) oder keine Kandidaten mehr hat - **G Routen**, die beste zählt als Top-1.
         """
     )
@@ -340,6 +340,6 @@ Implementiert in `dbs_algorithm.py` (Suchkerne und `beam_search` aus der Beam-Se
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Heuristische Baumsuche: Greedy bis MCTS](https://sebastianhanisch.net/konzepte-heuristische-baumsuche.html)."
 )
